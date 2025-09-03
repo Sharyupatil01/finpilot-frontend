@@ -9,21 +9,21 @@ const Step2Assets = () => {
     let newErrors = {};
 
     // Assets
-    if (!userInput.assets.cash_equivalents) newErrors.cash_equivalents = "Cash & Savings is required";
+    if (!userInput.assets.cash_equivalents) newErrors.cash_equivalents = "Cash & Savings is required.Enter 0 if not applicable.";
     else if (userInput.assets.cash_equivalents < 0) newErrors.cash_equivalents = "Cannot be negative";
 
-    if (!userInput.assets.equity_investments) newErrors.equity_investments = "Equity Investments are required";
+    if (!userInput.assets.equity_investments) newErrors.equity_investments = "Equity Investments are required.Enter 0 if not applicable.";
     else if (userInput.assets.equity_investments < 0) newErrors.equity_investments = "Cannot be negative";
 
     // Liabilities
     if (!userInput.liabilities.high_interest_debt && userInput.liabilities.high_interest_debt !== 0) {
-      newErrors.high_interest_debt = "High-Interest Debt is required";
+      newErrors.high_interest_debt = "High-Interest Debt is required.Enter 0 if not applicable.";
     } else if (userInput.liabilities.high_interest_debt < 0) {
       newErrors.high_interest_debt = "Cannot be negative";
     }
 
     if (!userInput.liabilities.loans_emi && userInput.liabilities.loans_emi !== 0) {
-      newErrors.loans_emi = "Loan EMIs are required";
+      newErrors.loans_emi = "Loan EMIs are required.Enter 0 if not applicable.";
     } else if (userInput.liabilities.loans_emi < 0) {
       newErrors.loans_emi = "Cannot be negative";
     }

@@ -1,17 +1,15 @@
-// NEW: Import useState from React
 import React, { useContext, useState } from 'react';
-import Loading from './components/Loading';
+import Loading from './components/Loading'; // Your component is already imported
 import { AppContext } from './context/AppContext';
 import {
   Box,
   Typography,
   Alert,
   Paper,
-  CircularProgress
+
 } from '@mui/material';
 import MainForm from './components/UserInput/MainForm';
 import PlanDashboard from './components/Dashboard/PlanDashboard';
-// NEW: Import the LandingPage component you just created
 import LandingPage from './components/LandingPage';
 import './App.css';
 
@@ -38,40 +36,33 @@ const animations = `
 function App() {
   const { generatedPlan, isLoading, error } = useContext(AppContext);
 
-  // NEW STATE: This will control which view is shown. Defaults to true.
   const [showLandingPage, setShowLandingPage] = useState(true);
 
-  // A cohesive dark color palette
   const darkPurple = '#0D0B1A';
   const textLight = 'rgba(200, 200, 220, 0.9)';
 
-  // NEW HANDLER: This function will be called when the "Get Started" button is clicked.
   const handleGetStarted = () => {
     setShowLandingPage(false);
   };
 
-  // NEW LOGIC: If showLandingPage is true, we only render the LandingPage component.
   if (showLandingPage) {
     return <LandingPage onGetStarted={handleGetStarted} />;
   }
-  const isMainFormActive = !isLoading && !error && !generatedPlan;
 
-  // If showLandingPage is false, we render the main application as before.
+  const isMainFormActive = !error && !generatedPlan;
+
   return (
     <>
       <style>{animations}</style>
-
       <Box
         sx={{
           minHeight: '100vh',
           display: 'flex',
-
           background: `linear-gradient(-45deg, ${darkPurple}, #1a1625, #221c35, ${darkPurple})`,
           backgroundSize: '400% 400%',
           animation: 'gradientShift 20s ease infinite',
         }}
       >
-
         {isMainFormActive && (
           <Box
             sx={{
@@ -113,7 +104,6 @@ function App() {
           </Box>
         )}
 
-
         {/* Right Panel */}
         <Box
           sx={{
@@ -136,19 +126,8 @@ function App() {
             }}
           >
             {isLoading ? (
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  mt: 10,
-                }}
-              >
-                <CircularProgress size={60} />
-                <Typography variant="h6" sx={{ mt: 2 }}>
-                  Generating your personalized plan...
-                </Typography>
-              </Box>
+              // CORRECTED: Use your custom component instead of the inline one.
+              <Loading />
             ) : error ? (
               <Alert severity="error" sx={{ mt: 4 }}>
                 {error}

@@ -22,7 +22,7 @@ const SimulationTabs = () => {
   };
 
   return (
-    <Box sx={{ mt: 5 }}>
+    <Box sx={{ mt: 5  }}>
       <Typography variant="h5" align="center" gutterBottom>
         Economic Forecaster
       </Typography>
@@ -39,7 +39,12 @@ const SimulationTabs = () => {
       {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
 
       {simulationResults && (
-        <Box sx={{ border: '1px solid #e0e0e0', borderRadius: 2 }}>
+        <Box  sx={{ 
+            border: '1px solid #9e81d7ff', 
+            borderRadius: 2 , 
+            backgroundColor:'black', 
+            boxShadow: '0 0 6px 1px rgba(158, 129, 215, 0.6)', 
+          }}>
           <Tabs value={activeTab} onChange={(e, newValue) => setActiveTab(newValue)} centered>
             {simulationResults.scenarios.map((scenario, index) => (
               <Tab label={scenario.name} key={index} />
@@ -48,7 +53,7 @@ const SimulationTabs = () => {
           {simulationResults.scenarios.map((scenario, index) => (
             <TabPanel value={activeTab} index={index} key={index}>
               <Typography variant="h6" gutterBottom>{scenario.name}</Typography>
-              <Typography variant="body2" sx={{ fontStyle: 'italic', mb: 2 }}>{scenario.narrative}</Typography>
+              <Typography variant="body2" sx={{  mb: 2 }}>{scenario.narrative}</Typography>
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>Revised Goal Timelines:</Typography>
               {Object.entries(scenario.projected_timelines).map(([goal, timeline]) => (
                 <Typography key={goal} variant="body2">{goal}: <strong>{timeline}</strong></Typography>

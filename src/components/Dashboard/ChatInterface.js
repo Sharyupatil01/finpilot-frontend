@@ -56,7 +56,16 @@ const ChatInterface = () => {
       <Paper elevation={3} sx={{ p: 2 }}>
         <Box
           ref={chatBoxRef}
-          sx={{ height: '300px', overflowY: 'auto', mb: 2, border: '1px solid #e0e0e0', p: 2, borderRadius: 1 }}
+          sx={{
+            height: '300px',
+            overflowY: 'auto',
+            mb: 2,
+            p: 2,
+            borderRadius: 2,
+            border: '1px solid #9e81d7ff',
+            backgroundColor: 'rgba(12, 10, 25, 0.95)',
+            boxShadow: '0 0 6px 1px rgba(158, 129, 215, 0.6)'
+          }}
         >
           {chatHistory.map((msg, index) => (
             <Box
