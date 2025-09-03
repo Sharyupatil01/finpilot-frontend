@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
+// NEW: Import useState from React
+import React, { useContext, useState } from 'react';
+import Loading from './components/Loading';
 import { AppContext } from './context/AppContext';
 import {
   Box,
   Typography,
-  CircularProgress,
   Alert,
   Paper,
+  CircularProgress
 } from '@mui/material';
 import MainForm from './components/UserInput/MainForm';
 import PlanDashboard from './components/Dashboard/PlanDashboard';
+// NEW: Import the LandingPage component you just created
+import LandingPage from './components/LandingPage';
 import './App.css';
+
 // CSS keyframes for background animation and text fade-in
 const animations = `
 @keyframes gradientShift {
@@ -33,10 +38,25 @@ const animations = `
 function App() {
   const { generatedPlan, isLoading, error } = useContext(AppContext);
 
+  // NEW STATE: This will control which view is shown. Defaults to true.
+  const [showLandingPage, setShowLandingPage] = useState(true);
+
   // A cohesive dark color palette
   const darkPurple = '#0D0B1A';
   const textLight = 'rgba(200, 200, 220, 0.9)';
 
+  // NEW HANDLER: This function will be called when the "Get Started" button is clicked.
+  const handleGetStarted = () => {
+    setShowLandingPage(false);
+  };
+
+  // NEW LOGIC: If showLandingPage is true, we only render the LandingPage component.
+  if (showLandingPage) {
+    return <LandingPage onGetStarted={handleGetStarted} />;
+  }
+  const isMainFormActive = !isLoading && !error && !generatedPlan;
+
+  // If showLandingPage is false, we render the main application as before.
   return (
     <>
       <style>{animations}</style>
@@ -45,60 +65,59 @@ function App() {
         sx={{
           minHeight: '100vh',
           display: 'flex',
+
           background: `linear-gradient(-45deg, ${darkPurple}, #1a1625, #221c35, ${darkPurple})`,
           backgroundSize: '400% 400%',
           animation: 'gradientShift 20s ease infinite',
         }}
       >
-        {/* Left Panel (Brand + Tagline) */}
-        <Box
-          className="gradient-background"
-          sx={{
-            flex: '0 0 40%',
-            display: 'flex',
-            flexDirection: 'column',
-            // Align content to the left
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start',
-            background: 'rgba(15, 12, 30, 0.95)',
-            p: 8, // Increased padding for better spacing
-          }}
-        >
-          {/* Main Title: Made bigger with variant="h2" */}
 
-          <Typography
-            variant="h1"
+        {isMainFormActive && (
+          <Box
             sx={{
-              fontWeight: 5500,
-              fontSize: "5 rem",
-              background: "linear-gradient(90deg, #8133d5ff, #b94386ff, #336acbff)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              flex: '0 0 40%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start',
+              background: 'rgba(15, 12, 30, 0.95)',
+              p: 8,
             }}
           >
-            Your AI-Powered Financial Co-Pilot
-          </Typography>
+            <Typography
+              variant="h1"
+              sx={{
+                fontWeight: 600,
+                fontSize: "5rem",
+                background: "linear-gradient(90deg, #8133d5ff, #b94386ff, #336acbff)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Your AI-Powered Financial Co-Pilot
+            </Typography>
+            <Typography
+              variant="body1"
+              align="left"
+              sx={{
+                mt: 2,
+                color: textLight,
+                animation: 'fadeIn 1s ease-out 0.5s forwards',
+                maxWidth: '80%',
+              }}
+            >
+              With FinPilot, your money moves with purpose. Plan smarter, invest wiser,
+              and grow faster — guided by personalized financial roadmaps built for your future.
+            </Typography>
+          </Box>
+        )}
 
-          {/* Tagline: Made smaller with variant="body1" and left-aligned */}
-          <Typography
-            variant="body1" // Changed from h6 to body1 for a smaller size
-            align="left"
-            sx={{
-              mt: 2,
-              color: textLight,
-              animation: 'fadeIn 1s ease-out 0.5s forwards',
-              maxWidth: '80%', // Constrain width for better readability
-            }}
-          >
-            With FinPilot, your money moves with purpose. Plan smarter, invest wiser, and grow faster - guided by personalized financial roadmaps built for your future.
-          </Typography>
-        </Box>
 
-        {/* Right Panel (Form or Dashboard) */}
+        {/* Right Panel */}
         <Box
           sx={{
-            flex: '0 0 60%',
+            flex: isMainFormActive ? '0 0 60%' : '1',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
