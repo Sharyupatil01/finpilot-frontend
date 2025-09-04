@@ -5,7 +5,7 @@ This application is designed to connect with the FinPilot Backend API to fetch a
 
 Live Demo :  https://finpilot-alpha.vercel.app/ 
 
-# 📌 Features
+ 📌 Features
 
 ✅ Modern UI with Material-UI + Tailwind styling
 
@@ -19,7 +19,7 @@ Live Demo :  https://finpilot-alpha.vercel.app/
 
 ✅ Responsive design for mobile & desktop
 
-# 🛠 Tech Stack
+ 🛠 Tech Stack
 
 - React.js – UI framework
 - Material-UI (MUI) – UI components
@@ -28,20 +28,20 @@ Live Demo :  https://finpilot-alpha.vercel.app/
 - Axios / Fetch – API requests to backend
 
 
- # 🔗 Backend Integration
+ 🔗 Backend Integration
 
 The frontend connects with the FinPilot backend API.
 Make sure the backend server is running before starting the frontend.
 Update the API base URL in services/api.js if needed.
 
-# 🔧 Available Scripts
+🔧 Available Scripts
 
 npm start → Runs the app in development mode
 npm run build → Builds the app for production
 npm test → Launches test runner
 npm run lint → Checks for linting errors (if configured)
 
-# 🚀 Getting Started
+ 🚀 Getting Started
 1️⃣ Clone the repository
 `git clone https://github.com/your-username/finpilot-frontend.git
 cd finpilot-frontend`
@@ -52,6 +52,6 @@ cd finpilot-frontend`
 3️⃣ Run the development server
 `npm start`
 
-# 👩‍💻 Author
+👩‍💻 Author
 
 Developed by team <b>LUMINA</b> ✨
