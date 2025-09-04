@@ -37,19 +37,25 @@ Update the API base URL in services/api.js if needed.
 🔧 Available Scripts
 
 npm start → Runs the app in development mode
+
 npm run build → Builds the app for production
+
 npm test → Launches test runner
+
 npm run lint → Checks for linting errors (if configured)
 
  🚀 Getting Started
 1️⃣ Clone the repository
 `git clone https://github.com/your-username/finpilot-frontend.git
+
 cd finpilot-frontend`
 
 2️⃣ Install dependencies
+
 `npm install`
 
 3️⃣ Run the development server
+
 `npm start`
 
 👩‍💻 Author
