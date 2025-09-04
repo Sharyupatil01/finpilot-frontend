@@ -45,7 +45,9 @@ npm test → Launches test runner
 npm run lint → Checks for linting errors (if configured)
 
  🚀 Getting Started
+ 
 1️⃣ Clone the repository
+
 `git clone https://github.com/your-username/finpilot-frontend.git
 
 cd finpilot-frontend`
