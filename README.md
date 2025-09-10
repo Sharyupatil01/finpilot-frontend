@@ -1,5 +1,8 @@
 # FinPilot (Frontend) 
 
+Live Application 
+https://finpilot-alpha.vercel.app/
+
 FinPilot is an AI-powered financial planning assistant that helps users create personalized investment and savings strategies. This repository contains the frontend of the project, built with React, Material-UI, and TailwindCSS.
 
 📌 Features
